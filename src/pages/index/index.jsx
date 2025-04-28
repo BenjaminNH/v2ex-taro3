@@ -10,17 +10,15 @@ export default function Index() {
   const [threads, setThreads] = useState([]);
 
   useEffect(() => {
-    const fetchData = () => {
+    const fetchData = async () => {
       try {
-        Taro.request({
+        const res = await Taro.request({
           url: api.getLatestTopic(),
-          success: (res) => {
-            if (res.statusCode === 200) {
-              setLoading(false);
-              setThreads(res.data);
-            }
-          },
         });
+        if (res.statusCode === 200) {
+          setLoading(false);
+          setThreads(res.data);
+        }
       } catch (error) {
         Taro.showToast({
           title: "网络请求出错",
@@ -29,7 +27,7 @@ export default function Index() {
     };
 
     fetchData();
-  });
+  }, []);
 
   return (
     <View>
