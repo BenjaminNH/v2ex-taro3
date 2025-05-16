@@ -44,14 +44,9 @@
   margin-right: 10px;
 }
 
-.node {
-  float: right;
-}
-
 .node .tag {
   font-size: 24px;
   padding: 5px 15px;
-  float: right;
   background-color: #eee;
   border-radius: 5px;
 }
